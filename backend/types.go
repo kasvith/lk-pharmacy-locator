@@ -13,12 +13,17 @@ type PharmacyEntry struct {
 	Email          []string `json:"email"`
 }
 
-type Area struct {
-	Name       string
-	Pharmacies []*PharmacyEntry
+type AreaData map[string][]*PharmacyEntry
+type DistrictData map[string]AreaData
+
+type DistrictsResponse struct {
+	Districts []string `json:"districts"`
 }
 
-type District struct {
-	Name  string
-	Areas []*Area
+type AreasResponse struct {
+	Areas []string `json:"areas"`
+}
+
+type PharmacyResponse struct {
+	Pharmacies []*PharmacyEntry `json:"pharmacies"`
 }
