@@ -1,0 +1,24 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Pharmacy locator front",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasvith/lk-pharmacy-locator.git"
+  },
+  "keywords": [
+    "lk",
+    "pharmacy",
+    "locator"
+  ],
+  "author": "Kasun Vithanage",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kasvith/lk-pharmacy-locator/issues"
+  },
+  "homepage": "https://github.com/kasvith/lk-pharmacy-locator#readme"
+}
