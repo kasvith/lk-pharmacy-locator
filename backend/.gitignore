@@ -1,0 +1,6 @@
+bin
+build
+*.exe
+vendor
+.idea
+.vscode
