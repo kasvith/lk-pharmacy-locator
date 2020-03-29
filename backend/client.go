@@ -10,7 +10,7 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
-func ProcessData(r io.Reader) ([]*PharmacyEntry, error) {
+func ProcessData(r io.Reader) (DistrictData, error) {
 	f, err := excelize.OpenReader(r)
 	if err != nil {
 		return nil, err
@@ -33,10 +33,20 @@ func ProcessData(r io.Reader) ([]*PharmacyEntry, error) {
 		})
 	}
 
-	return data, nil
+	districtData := make(DistrictData)
+	for _, d := range data {
+		district := strings.ToLower(d.District)
+		area := strings.ToLower(d.Area)
+		if _, has := districtData[district]; !has {
+			districtData[district] = make(AreaData)
+		}
+		districtData[district][area] = append(districtData[district][area], d)
+	}
+
+	return districtData, nil
 }
 
-func FetchData() ([]*PharmacyEntry, error) {
+func FetchData() (DistrictData, error) {
 	client := resty.New()
 	resp, err := client.R().Get("https://docs.google.com/spreadsheets/d/1EzmE5KNIzy2cOE1OZdW7wo6MfLDmAq72relB9mxnbgo/export")
 	if err != nil {
